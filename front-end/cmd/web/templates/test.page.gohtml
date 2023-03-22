@@ -41,17 +41,17 @@
     let output = document.getElementById("output");
     let sent = document.getElementById("payload");
     let recevied = document.getElementById("received");
-    let mailBtn= document.getElementById("mailBtn");
+    let mailBtn = document.getElementById("mailBtn");
 
-     mailBtn.addEventListener("click", function() {
+    mailBtn.addEventListener("click", function() {
 
         const payload = {
             action: "mail",
             mail: {
                 from: "me@example.com",
-                to: "you@example.com",
-                subject:"Test email",
-                message:"Hello world!"
+                to: "you@there.com",
+                subject: "Test email",
+                message: "Hello world!",
             }
         }
 
@@ -79,8 +79,6 @@
             output.innerHTML += "<br><br>Eror: " + error;
         })
     })
-
-
 
     logBtn.addEventListener("click", function() {
         const payload = {
@@ -135,7 +133,7 @@
             headers: headers,
         }
 
-        fetch("http:\/\/localhost:8080/handle", body)
+        fetch("http://localhost:8080/handle", body)
         .then((response) => response.json())
         .then((data) => {
             sent.innerHTML = JSON.stringify(payload, undefined, 4);
@@ -147,7 +145,7 @@
             }
         })
         .catch((error) => {
-            output.innerHTML += "<br><br>Eror: " + error;
+            output.innerHTML += "<br><br>Error: " + error;
         })
     })
 
